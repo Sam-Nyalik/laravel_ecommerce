@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  app:
+    image: php:8.1-fpm
+    container_name: laravel_ecommerce_app
+    working_dir: /var/www/html
+    volumes:
+      - .:/var/www/html
+    networks:
+      - laravel
+
+  webserver:
+    image: nginx:alpine
+    container_name: laravel_ecommerce_webserver
+    volumes:
+      - .:/var/www/html
+      - ./docker/nginx:/etc/nginx/conf.d
+    ports:
+      - "8000:80"
+    networks:
+      - laravel
+
+  db:
+    image: mysql:8.0
+    container_name: laravel_db
+    environment:
+      MYSQL_DATABASE: laravel_ecommerce
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+    ports:
+      - "3306:3306"
+    networks:
+      - laravel
+    
+
+networks:
+  laravel:
+    driver: bridge

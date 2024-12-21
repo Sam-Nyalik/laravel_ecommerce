@@ -1,0 +1,26 @@
+:root {
+    --main-color: #fff;
+    --tertiary-color: #000;
+    --first-color: #F0BB78;
+    --second-color: #FFF0DC;
+    --third-color: #543A14;
+    --forth-color: #131010;
+}
+
+nav {
+    background-color: var(--second-color);
+}
+
+nav a {
+    color: var(--tertiary-color);
+}
+
+/* Products */
+#page_title {
+    margin: 20px;
+}
+
+#page_title h3 {
+    text-transform: uppercase;
+    text-align: center;
+}
